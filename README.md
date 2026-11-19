@@ -135,4 +135,8 @@ The tests use [Pest](https://pestphp.com) and [Orchestra Testbench](https://pack
 
 ## License
 
-This package is licensed under the [GNU Affero General Public License v3.0](LICENSE) (`AGPL-3.0-only`).
+Copyright (C) 2026 Tobias Hug <tobias.hug@bitpro.ch>
+
+This package is free software: you can redistribute it and/or modify it under the terms of the [GNU Affero General Public License](LICENSE) as published by the Free Software Foundation, version 3 of the License (`AGPL-3.0-only`).
+
+This package is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
