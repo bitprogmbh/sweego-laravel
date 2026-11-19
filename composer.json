@@ -3,7 +3,7 @@
     "description": "Sweego mail transport for Laravel, using the Laravel HTTP client.",
     "keywords": ["laravel", "mail", "mailer", "sweego", "transport"],
     "type": "library",
-    "license": "MIT",
+    "license": "AGPL-3.0-only",
     "require": {
         "php": "^8.2",
         "illuminate/http": "^11.0|^12.0|^13.0",
