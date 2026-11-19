@@ -5,7 +5,6 @@ namespace Bitprogmbh\SweegoLaravel;
 use Bitprogmbh\SweegoLaravel\Mail\SweegoTransport;
 use Illuminate\Mail\MailManager;
 use Illuminate\Support\ServiceProvider;
-use InvalidArgumentException;
 
 class SweegoServiceProvider extends ServiceProvider
 {
@@ -32,16 +31,13 @@ class SweegoServiceProvider extends ServiceProvider
      */
     protected function makeTransport(array $config): SweegoTransport
     {
-        $apiKey = $config['key'] ?? config('sweego.key');
-
-        if (! is_string($apiKey) || $apiKey === '') {
-            throw new InvalidArgumentException('The Sweego API key is missing. Set SWEEGO_API_KEY or a "key" entry on the mailer.');
-        }
+        $settings = SweegoSettings::fromMailerConfig($config);
 
         return new SweegoTransport(
-            apiKey: $apiKey,
-            endpoint: (string) ($config['endpoint'] ?? config('sweego.endpoint')),
-            timeout: (int) ($config['timeout'] ?? config('sweego.timeout')),
+            apiKey: $settings->apiKey,
+            endpoint: $settings->endpoint,
+            timeout: $settings->timeout,
+            campaignType: $settings->campaignType,
         );
     }
 }

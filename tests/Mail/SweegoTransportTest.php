@@ -150,3 +150,12 @@ it('throws a transport exception when the Sweego API is unreachable', function (
 
     Mail::raw('Hello', fn (Message $message) => $message->to('anna@example.com')->subject('Greetings'));
 })->throws(TransportException::class, 'Could not reach the Sweego API: timed out');
+
+it('sends the campaign type configured on the mailer', function () {
+    config()->set('mail.mailers.sweego', ['transport' => 'sweego', 'campaign_type' => 'newsletter']);
+    fakeSweego();
+
+    Mail::raw('Hello', fn (Message $message) => $message->to('anna@example.com')->subject('Greetings'));
+
+    expect(sentPayload())->toMatchArray(['campaign-type' => 'newsletter']);
+});
